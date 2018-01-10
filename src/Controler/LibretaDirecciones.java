@@ -44,8 +44,6 @@ public class LibretaDirecciones extends Application {
         //y este para mostrar la vista persona
         muestraVistaPersona();
         
-        
-        
     }
     
     //han de ser publicos por si necesitamos llamarlos desde otros controladores
@@ -71,11 +69,29 @@ public class LibretaDirecciones extends Application {
           
       }
 
-    public void muestraVistaPersona() {
-
+     public void muestraVistaPersona() {
+        //creamos el cargador
+        FXMLLoader cargador = new FXMLLoader();
+        //damos la url correspondiente a la otra vista, VistaPersonal.fxml
+        URL location = LibretaDirecciones.class.getResource("../View/VistaPersona.fxml");
+        //cogemos la url y se la pasamos al cargador
+        cargador.setLocation(location);
+        
+        try {
+            vistaPersona=cargador.load();
+        } catch (IOException ex) {
+            
+        }
+        //añadimos la vista al layout central
+        layoutPrincipal.setCenter(vistaPersona);
+        
+                
     }
     
-
+      //Invoco el método getPrimaryStage para que devuelva mi escenario principal
+    public Stage getPrimaryStage() {
+        return escenarioPrincipal;
+    }
    
     public static void main(String[] args) {
         launch(args);
