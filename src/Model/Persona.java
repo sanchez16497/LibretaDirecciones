@@ -5,6 +5,7 @@
  */
 package Model;
 
+import Utilidades.AdaptadorDeeFechas;
 import java.time.LocalDate;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
@@ -12,6 +13,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 /**
  *
@@ -104,9 +106,11 @@ public class Persona {
         return codigoPostal;
     }
 
+   @XmlJavaTypeAdapter(AdaptadorDeeFechas.class)
     public LocalDate getFechaDeNacimiento() {
         return (LocalDate) fechaDeNacimiento.get();
     }
+    
 
     public void setFechaDeNacimiento(LocalDate fechaDeNacimiento) {
         this.fechaDeNacimiento.set(fechaDeNacimiento);
